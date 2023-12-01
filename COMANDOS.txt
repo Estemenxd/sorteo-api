@@ -1,0 +1,16 @@
+Instalar tymon para JWT
+=> composer require tymon/jwt-auth
+Para publicar la configuración del Tymon, si más adelante se desea realizar algún cambio
+=> php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+Para generar el key 
+=> php artisan jwt:secret
+Key generado para JWT
+scxWTblH07lfoQxtsDZRWWx9eGQn5gkZOJ40ZivnkK61h3kH22WY6CSKaUPvkMCa
+Para genear controlador Auth
+=> php artisan make:controller V1/AuthController
+Creación de Middleware para validar token del usuario
+=> php artisan make:middleware JwtMiddlware
+
+Para agregar bootstrap a angular
+ng add @ng-bootstrap/ng-bootstrap
+npm install @popperjs/core --save

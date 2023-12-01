@@ -1,0 +1,987 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Eventos API",
+        "description": "Descripción de tu API",
+        "contact": {
+            "email": "roni290690@email.com"
+        },
+        "license": {
+            "name": "Licencia",
+            "url": ""
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/eventos/login": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Listar Usuarios",
+                "description": "Descripción detallada de la ruta",
+                "operationId": "geUsuarios",
+                "requestBody": {
+                    "description": "Datos para crear un nuevo ejemplo",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Login Obtener Token",
+                "operationId": "authenticate",
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Usuario"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "creado exitosamente"
+                    },
+                    "422": {
+                        "description": "Error de validación"
+                    }
+                }
+            }
+        },
+        "/api/eventos/lista-detalle-juego": {
+            "get": {
+                "tags": [
+                    "DetalleJuego"
+                ],
+                "summary": "Listar Detalle Juego",
+                "description": "Reguest",
+                "operationId": "listarDetalleJuego",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/listar-detalle-juegoID/{idDetalleJuego}": {
+            "get": {
+                "tags": [
+                    "DetalleJuego"
+                ],
+                "summary": "Listar Detalle Juego por ID",
+                "operationId": "listarDetalleJuegoId",
+                "parameters": [
+                    {
+                        "name": "idDetalleJuego",
+                        "in": "path",
+                        "description": "Id del Detalle de Juego",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/create-detalle-juego": {
+            "post": {
+                "tags": [
+                    "DetalleJuego"
+                ],
+                "summary": "Crear Detalle Juego",
+                "operationId": "storeDetalleJuego",
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DetalleJuego"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/update-detalle-juego/{idDetalleJ}": {
+            "put": {
+                "tags": [
+                    "DetalleJuego"
+                ],
+                "summary": "Actualizar Detalle Juego",
+                "operationId": "updateDetalleJuego",
+                "parameters": [
+                    {
+                        "name": "idDetalleJ",
+                        "in": "path",
+                        "description": "ID detalle Juego",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DetalleJuego"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/eliminar-detalle-juego/{idDetalleJ}": {
+            "put": {
+                "tags": [
+                    "DetalleJuego"
+                ],
+                "summary": "Eliminar Detalle Juego",
+                "operationId": "destroyDetalleJuego",
+                "parameters": [
+                    {
+                        "name": "idDetalleJ",
+                        "in": "path",
+                        "description": "ID detalle Juego",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-evento": {
+            "get": {
+                "tags": [
+                    "Eventos"
+                ],
+                "summary": "Listar Eventos",
+                "description": "Reguest",
+                "operationId": "listarEvento",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-evento/{idEvento}": {
+            "get": {
+                "tags": [
+                    "Premios"
+                ],
+                "summary": "Listar Evento por ID",
+                "operationId": "showEventoId",
+                "parameters": [
+                    {
+                        "name": "idEvento",
+                        "in": "path",
+                        "description": "ID del Premio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/create-evento": {
+            "post": {
+                "tags": [
+                    "Eventos"
+                ],
+                "summary": "Crear Evento",
+                "operationId": "storeEvento",
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Eventos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/update-evento/{idEvento}": {
+            "put": {
+                "tags": [
+                    "Eventos"
+                ],
+                "summary": "Actualizar Evento",
+                "operationId": "updateEvento",
+                "parameters": [
+                    {
+                        "name": "idEvento",
+                        "in": "path",
+                        "description": "ID del Evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Eventos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/eliminar-evento/{idEvento}": {
+            "delete": {
+                "tags": [
+                    "Eventos"
+                ],
+                "summary": "Eliminar Evento",
+                "operationId": "destroyEvento",
+                "parameters": [
+                    {
+                        "name": "idEvento",
+                        "in": "path",
+                        "description": "ID del Evento",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos Elimnados Correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-juego": {
+            "get": {
+                "tags": [
+                    "Juegos"
+                ],
+                "summary": "Listar Juegos",
+                "description": "Reguest",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-juego/{idJuego}": {
+            "get": {
+                "tags": [
+                    "Juegos"
+                ],
+                "summary": "Listar Juego",
+                "operationId": "showJuegoId",
+                "parameters": [
+                    {
+                        "name": "idJuego",
+                        "in": "path",
+                        "description": "ID del Juego",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/create-juego": {
+            "post": {
+                "tags": [
+                    "Juegos"
+                ],
+                "summary": "Crear Juego",
+                "operationId": "storeJuego",
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Juegos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/update-juego/{idJuego}": {
+            "put": {
+                "tags": [
+                    "Juegos"
+                ],
+                "summary": "Actualizar Juego",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "idJuego",
+                        "in": "path",
+                        "description": "ID del Juego",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Juegos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/eliminar-juego/{idJuego}": {
+            "delete": {
+                "tags": [
+                    "Juegos"
+                ],
+                "summary": "Eliminar Juego",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "idJuego",
+                        "in": "path",
+                        "description": "ID del Juego",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos Elimnados Correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/search-participante/{codigo}/{documento}": {
+            "get": {
+                "tags": [
+                    "Participantes"
+                ],
+                "summary": "Listar Participante por DNI o Codigo",
+                "operationId": "searchParticipante",
+                "parameters": [
+                    {
+                        "name": "codigo",
+                        "in": "path",
+                        "description": "Codigo del Participante",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "documento",
+                        "in": "path",
+                        "description": "Número Documento del Participante",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/sortear-participantes": {
+            "get": {
+                "tags": [
+                    "Participantes"
+                ],
+                "summary": "Sortear Participante",
+                "description": "Reguest",
+                "operationId": "sortearParticipante",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-participantes/{elementosPorPagina}": {
+            "get": {
+                "tags": [
+                    "Participantes"
+                ],
+                "summary": "Listar Participantes",
+                "description": "Reguest",
+                "operationId": "getParticipante",
+                "parameters": [
+                    {
+                        "name": "elementosPorPagina",
+                        "in": "path",
+                        "description": "Elementos por Pagina",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-premio": {
+            "get": {
+                "tags": [
+                    "Premios"
+                ],
+                "summary": "Listar Premios",
+                "description": "Reguest",
+                "operationId": "listarPremio",
+                "responses": {
+                    "200": {
+                        "description": "Respuesta exitosa"
+                    },
+                    "404": {
+                        "description": "No encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/lista-premio/{idPremio}": {
+            "get": {
+                "tags": [
+                    "Premios"
+                ],
+                "summary": "Listar Premio por ID",
+                "operationId": "showPremioId",
+                "parameters": [
+                    {
+                        "name": "idPremio",
+                        "in": "path",
+                        "description": "ID del Premio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/create-premio": {
+            "post": {
+                "tags": [
+                    "Premios"
+                ],
+                "summary": "Crear Premio",
+                "operationId": "storePremio",
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Premios"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/update-premio/{idPremio}": {
+            "put": {
+                "tags": [
+                    "Premios"
+                ],
+                "summary": "Actualizar Premio",
+                "operationId": "updatePremio",
+                "parameters": [
+                    {
+                        "name": "idPremio",
+                        "in": "path",
+                        "description": "ID del Premio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Request",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Premios"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "datos actualizado correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/eventos/eliminar-premio/{idPremio}": {
+            "delete": {
+                "tags": [
+                    "Premios"
+                ],
+                "summary": "Eliminar Juego",
+                "operationId": "destroyPremio",
+                "parameters": [
+                    {
+                        "name": "idPremio",
+                        "in": "path",
+                        "description": "ID del Premio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "datos Elimnados Correctamente"
+                    },
+                    "400": {
+                        "description": "Error de validación"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Usuario": {
+                "required": [
+                    "usuario",
+                    "clave"
+                ],
+                "properties": {
+                    "usuario": {
+                        "type": "string",
+                        "example": ""
+                    },
+                    "clave": {
+                        "type": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "DetalleJuego": {
+                "required": [
+                    "idEvento",
+                    "idJuego",
+                    "fechIni",
+                    "fechFin",
+                    "idUsuario"
+                ],
+                "properties": {
+                    "idEvento": {
+                        "type": "integer"
+                    },
+                    "idJuego": {
+                        "type": "integer"
+                    },
+                    "fechIni": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "fechFin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "idUsuario": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Eventos": {
+                "required": [
+                    "nombre",
+                    "idUsuario"
+                ],
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "idUsuario": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Juegos": {
+                "required": [
+                    "nombre",
+                    "descripcion"
+                ],
+                "properties": {
+                    "nombre": {
+                        "type": "string",
+                        "example": ""
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "Participantes": {
+                "required": [
+                    "codigo",
+                    "nroDocumento"
+                ],
+                "properties": {
+                    "codigo": {
+                        "type": "string",
+                        "example": ""
+                    },
+                    "nroDocumento": {
+                        "type": "string",
+                        "example": ""
+                    }
+                },
+                "type": "object"
+            },
+            "Premios": {
+                "required": [
+                    "nombre",
+                    "idUsuario"
+                ],
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "idUsuario": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Usuarios",
+            "description": "Usuarios"
+        },
+        {
+            "name": "DetalleJuego",
+            "description": "DetalleJuego"
+        },
+        {
+            "name": "Eventos",
+            "description": "Eventos"
+        },
+        {
+            "name": "Juegos",
+            "description": "Juegos"
+        },
+        {
+            "name": "Participantes",
+            "description": "Participantes"
+        },
+        {
+            "name": "Premios",
+            "description": "Premios"
+        }
+    ]
+}
